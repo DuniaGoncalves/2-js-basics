@@ -310,25 +310,53 @@ alert(name + ' is a ' + age + ' years old ' + job + '. Is she married? ' + isMar
 
 // CODING CHALLENGE 2
 
-function printFullAge(yearsBorn) {
-  var ages = [];
-  var fullAges = [];
+// function printFullAge(yearsBorn) {
+//   var ages = [];
+//   var fullAges = [];
+//
+//   for (var i = 0; i < yearsBorn.length; i++){
+//     ages[i]= 2017 - yearsBorn[i];
+//   }
+//
+//   for (var i = 0; i < ages.length; i++) {
+//     if (ages[i] >= 18) {
+//       console.log('This person is ' + ages[i] + ' and is of full age.');
+//       fullAges.push(true);
+//     } else {
+//       console.log('This person is ' + ages[i] + ' and not of full age.');
+//       fullAges.push(false)
+//     }
+//   }
+//   return fullAges;
+// }
+// var yearsBorn = [1983,1987,2004,2006,2017];
+// var full_1 = printFullAge(yearsBorn);
+// var full_2 = printFullAge([2004,1933,1958]);
 
-  for (var i = 0; i < yearsBorn.length; i++){
-    ages[i]= 2017 - yearsBorn[i];
-  }
+//Lecture on 'this'
 
-  for (var i = 0; i < ages.length; i++) {
-    if (ages[i] >= 18) {
-      console.log('This person is ' + ages[i] + ' and is of full age.');
-      fullAges.push(true);
-    } else {
-      console.log('This person is ' + ages[i] + ' and not of full age.');
-      fullAges.push(false)
-    }
+var john = {
+  name: 'John',
+  yearOfBirth: 1998,
+  calculateAge: function(){
+    console.log(this);
+    console.log(2018 - this.yearOfBirth);
+    //
+    // function innerFunction() {
+    //   console.log(this);
+    // }
+    // innerFunction();
+
   }
-  return fullAges;
 }
-var yearsBorn = [1983,1987,2004,2006,2017];
-var full_1 = printFullAge(yearsBorn);
-var full_2 = printFullAge([2004,1933,1958]);
+
+john.calculateAge();
+
+var mike = {
+  name: 'Mike',
+  yearOfBirth: 1984
+}
+
+mike.calculateAge = john.calculateAge;
+
+mike.calculateAge();
